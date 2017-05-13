@@ -7,10 +7,23 @@ using System.IO;
 
 namespace ARQuestCreator.SceneCreator
 {
+    [System.Serializable]
     public class GameContainer
     {
         public GameContainer() { }
 
-        public List<string> _scenesNames;
+        public GameContainer(bool isNew)
+        {
+            if (isNew)
+            {
+                scenes = new List<SceneContainer>();
+            }
+        }
+
+        public string name;
+        
+        public List<SceneContainer> scenes;
+
+        
     }
 }
