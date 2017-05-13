@@ -86,10 +86,12 @@ namespace ARQuestCreator
             Vector3 centerCorrection = item.transform.position - item.GetCenterInWorldSpace();
             Vector3 sizeCor = item.GetSizeInWorldSpace();
             float scale = Mathf.Sqrt(sizeCor.magnitude);
+
+            Debug.Log("size cor " + sizeCor + "   scale "+scale + "   "+ _startScale / scale);
             item.transform.SetParent(_transform);
             item.transform.localPosition = centerCorrection;
             item.transform.localRotation = Quaternion.identity;
-            item.transform.localScale = item.transform.localScale / scale * _startScale;
+            item.transform.localScale = item.transform.localScale * _startScale/scale;
 
 
             item.button.enabled = false;
