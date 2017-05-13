@@ -15,6 +15,11 @@ namespace ARQuestCreator
         bool _lockIsClosed = true;
         [SerializeField]
         bool _isOpened = false;
+        [Header("Container properties")]
+        [SerializeField]
+        GameObject _container;
+        [SerializeField]
+        List<string> _contentPathToPrefabs;
         [Header("Animator properties")]
         [SerializeField] string _isOpenParamName = "IsOpen";
         [Header("Notification strings")]
@@ -40,7 +45,6 @@ namespace ARQuestCreator
             }
             _isOpened = !_isOpened;
             _anim.SetBool(_isOpenParamName, _isOpened);
-            
         }
 
         private void Awake()

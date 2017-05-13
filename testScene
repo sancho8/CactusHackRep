@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SceneContainer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <_items>
+    <ItemInfo>
+      <name>shet</name>
+      <discription />
+      <gameObject>
+        <prefabName />
+        <instanceName />
+        <position>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </position>
+        <rotation>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+          <w>0</w>
+          <eulerAngles>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </eulerAngles>
+        </rotation>
+        <scale>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </scale>
+        <parentInstanceName />
+      </gameObject>
+    </ItemInfo>
+    <ItemInfo>
+      <name>shet2</name>
+      <discription />
+      <gameObject>
+        <prefabName />
+        <instanceName />
+        <position>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </position>
+        <rotation>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+          <w>0</w>
+          <eulerAngles>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </eulerAngles>
+        </rotation>
+        <scale>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </scale>
+        <parentInstanceName />
+      </gameObject>
+    </ItemInfo>
+    <ItemInfo>
+      <name>shet3</name>
+      <discription />
+      <gameObject>
+        <prefabName />
+        <instanceName />
+        <position>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </position>
+        <rotation>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+          <w>0</w>
+          <eulerAngles>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </eulerAngles>
+        </rotation>
+        <scale>
+          <x>0</x>
+          <y>0</y>
+          <z>0</z>
+        </scale>
+        <parentInstanceName />
+      </gameObject>
+    </ItemInfo>
+  </_items>
+  <_chests />
+</SceneContainer>
