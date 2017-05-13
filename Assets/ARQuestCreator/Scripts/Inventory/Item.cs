@@ -7,9 +7,9 @@ namespace ARQuestCreator
 {
     [RequireComponent(typeof(WorldButton))]
     [RequireComponent(typeof(BoxCollider))]
-    public class Item : MonoBehaviour, IWorldButtonClickHandler
+    public class Item : MonoBehaviour, IWorldButtonClickHandler, SceneCreator.IPrefab
     {
-
+        public string prefabName = "NEET TO SET";
         public string name = "defaultItemName";
         [TextArea(3, 20)]
         public string description = "default description";
@@ -137,6 +137,11 @@ namespace ARQuestCreator
             }
             Debug.Log(transform.position + "  " + b.center);
             return b.size;
+        }
+
+        public string GetPrefabPath()
+        {
+            return "Prefabs/Items/" + prefabName;
         }
     }
 

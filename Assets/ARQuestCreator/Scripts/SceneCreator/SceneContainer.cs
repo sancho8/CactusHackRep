@@ -14,7 +14,7 @@ namespace ARQuestCreator.SceneCreator
         public class ItemInfo
         {
             public string name;
-            public string discription;
+            public string description;
             public GameObjectInfo gameObject;
 
             public ItemInfo() { }
@@ -23,7 +23,7 @@ namespace ARQuestCreator.SceneCreator
             {
                 ItemInfo r = new ItemInfo();
                 r.name = item.name;
-                r.discription = item.description;
+                r.description = item.description;
                 r.gameObject = GameObjectInfo.GetFromGameObject(item.gameObject);
                 return r;
             }
@@ -41,8 +41,17 @@ namespace ARQuestCreator.SceneCreator
         {
             public string prefabName;
             public string instanceName;
+            /// <summary>
+            /// Local position of GameObject
+            /// </summary>
             public Vector3 position;
+            /// <summary>
+            /// Local rotation of GameObject
+            /// </summary>
             public Quaternion rotation;
+            /// <summary>
+            /// Local scale of GameObject
+            /// </summary>
             public Vector3 scale;
             public string parentInstanceName;
 
@@ -51,10 +60,16 @@ namespace ARQuestCreator.SceneCreator
             public static GameObjectInfo GetFromGameObject(GameObject go)
             {
                 GameObjectInfo r = new GameObjectInfo();
+                IPrefab iprefab = go.GetComponent<IPrefab>();
+                if (iprefab == null)
+                {
+                    Debug.Log("WTF");
+                    return null;
+                }
                 r.instanceName = go.name;
-                r.position = go.transform.position;
-                r.rotation = go.transform.rotation;
-                r.scale = go.transform.lossyScale;
+                r.position = go.transform.localPosition;
+                r.rotation = go.transform.localRotation;
+                r.scale = go.transform.localScale;
                 if (go.transform.parent != null)
                     r.parentInstanceName = go.transform.parent.name;
                 else
@@ -84,6 +99,8 @@ namespace ARQuestCreator.SceneCreator
             Debug.Log("Objects loaded from XML file\n");
             return sceneContainer;
         }
+
+
 
     }
 }
