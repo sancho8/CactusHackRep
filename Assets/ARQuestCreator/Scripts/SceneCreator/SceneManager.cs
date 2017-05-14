@@ -47,7 +47,13 @@ namespace ARQuestCreator.SceneCreator
 
         public void Save()
         {
-
+            Item[] _sceneItems = GetComponentsInChildren<Item>();
+            _sceneContainer._items.Clear();
+            foreach(var item in _sceneItems)
+            {
+                _sceneContainer._items.Add(SceneContainer.ItemInfo.GetFromItem(item));
+            }
+            
         }
 
         public void Load()

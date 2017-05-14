@@ -61,6 +61,11 @@ namespace ARQuestCreator
             return AllGamesContainer.Load().gameNames;
         }
 
+        public void SaveCurrentGame()
+        {
+            
+        }
+
         public void LoadGame(string gameName, GameRunningType grt)
         {
             Debug.Log("Load game" + gameName+" |  editMode: "+ grt.ToString());
@@ -93,7 +98,6 @@ namespace ARQuestCreator
                     ScreenSpaceUIManager.Instance.ShowUI(ScreenSpaceUIManager.UIType.Player);
                     break;
             }
-            
         }
 
         public void CreateNewGame(string gameName)
@@ -127,6 +131,7 @@ namespace ARQuestCreator
                 ARQuestCreator.SceneCreator.SceneManager newSceneManager = newSM.AddComponent<ARQuestCreator.SceneCreator.SceneManager>();
                 newSceneManager.SetScene(sc);
                 _currentT.scene = newSceneManager;
+                ScreenSpaceUIManager.Instance.GetComponentInChildren<UIEditiSceneController>().SetSceneManager(newSceneManager);
             }
         }
 

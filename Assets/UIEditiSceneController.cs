@@ -10,6 +10,15 @@ namespace ARQuestCreator.UI
     {
         [SerializeField] SceneManager _sceneManager;
 
+        [Header("Main")]
+        public GameObject _main;
+        [Header("ItemCatalog")]
+        public GameObject _catalog;
+        public GameObject _catalogGrid;
+        [Header("OnSelected")]
+        public GameObject _onSelected;
+        public GameObject _itemSelected;
+
         public void Hide()
         {
             gameObject.SetActive(false);
@@ -24,5 +33,7 @@ namespace ARQuestCreator.UI
         {
             _sceneManager = sm;
         }
+
+
     }
 }

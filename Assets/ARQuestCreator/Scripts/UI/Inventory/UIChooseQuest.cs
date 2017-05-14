@@ -73,7 +73,8 @@ namespace ARQuestCreator.UI
 
         public void OnChooseQuest(string name)
         {
-            Debug.Log("Choose quest " + name + "  |  ChoosingType: " + _currentCT.ToString());
+            //Debug.Log("Choose quest " + name + "  |  ChoosingType: " + _currentCT.ToString());
+            GetComponentInParent<UIStartScene>().ShowMainMenu();
             switch (_currentCT)
             {
                 case ChoosingType.Edit:
