@@ -7,8 +7,7 @@ namespace ARQuestCreator.SceneCreator
 {
     public class SceneManager : MonoBehaviour
     {
-
-        [SerializeField] string _xmlFileName;
+        
         [SerializeField] SceneContainer _sceneContainer = new SceneContainer();
         [SerializeField] bool _save;
         [SerializeField] bool _load;

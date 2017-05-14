@@ -45,7 +45,7 @@ namespace ARQuestCreator
             ScreenSpaceUIManager.Instance.ShowUI(ScreenSpaceUIManager.UIType.Player);
         }
 
-        
+
 
     }
 }
