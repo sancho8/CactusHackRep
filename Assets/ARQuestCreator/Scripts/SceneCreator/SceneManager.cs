@@ -12,7 +12,13 @@ namespace ARQuestCreator.SceneCreator
         [SerializeField] bool _save;
         [SerializeField] bool _load;
         [SerializeField] bool _reset;
+        [SerializeField] string _sceneName;
 
+        public void SetScene(SceneContainer sc)
+        {
+            _sceneContainer = sc;
+            Load();
+        }
 
         // Use this for initialization
         void Start()
@@ -22,21 +28,21 @@ namespace ARQuestCreator.SceneCreator
 
         private void Update()
         {
-            if (_load)
-            {
-                _load = false;
-                Load();
-            }
-            if (_save)
-            {
-                _save = false;
-                Save();
-            }
-            if (_reset)
-            {
-                _reset = false;
-                ResetContent();
-            }
+            //if (_load)
+            //{
+            //    _load = false;
+            //    Load();
+            //}
+            //if (_save)
+            //{
+            //    _save = false;
+            //    Save();
+            //}
+            //if (_reset)
+            //{
+            //    _reset = false;
+            //    ResetContent();
+            //}
         }
 
         public void Save()
@@ -46,11 +52,15 @@ namespace ARQuestCreator.SceneCreator
 
         public void Load()
         {
+            foreach(var item in _sceneContainer._items)
+            {
+                InstantiateItem(item);
+            }
         }
-
-        public void ResetContent()
+        
+        public void SetActive(bool value)
         {
-            _sceneContainer = new SceneContainer();
+            gameObject.SetActive(value);
         }
 
         #region Loading Scene

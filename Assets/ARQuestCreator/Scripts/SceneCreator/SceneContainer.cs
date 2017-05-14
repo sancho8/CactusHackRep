@@ -78,6 +78,17 @@ namespace ARQuestCreator.SceneCreator
             }
         }
 
+        public SceneContainer() { }
+        public SceneContainer(bool isNew)
+        {
+            if (isNew)
+            {
+                _items = new List<ItemInfo>();
+                _chests = new List<ChestInfo>();
+            }
+        }
+
+        public string name;
         public List<ItemInfo> _items;
         public List<ChestInfo> _chests;
     }

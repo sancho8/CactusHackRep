@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Vuforia;
+using ARQuestCreator.SceneCreator;
 
 namespace ARQuestCreator
 {
@@ -15,8 +16,15 @@ namespace ARQuestCreator
 
         #endregion // PRIVATE_MEMBER_VARIABLES
 
-        public GameObject scene;
+        public SceneManager scene;
 
+        public enum State
+        {
+            Disabled,
+            WaitingForScene,
+            EnabledScene
+        }
+        [SerializeField] private State _currentState = State.Disabled;
         #region UNTIY_MONOBEHAVIOUR_METHODS
 
         void OnEnable()
@@ -26,6 +34,7 @@ namespace ARQuestCreator
             {
                 mTrackableBehaviour.RegisterTrackableEventHandler(this);
             }
+
         }
 
         private void OnDisable()
@@ -34,9 +43,27 @@ namespace ARQuestCreator
                 mTrackableBehaviour.UnregisterTrackableEventHandler(this);
         }
 
+        private void Update()
+        {
+            if (scene != null)
+            {
+                scene.transform.position = transform.position;
+                scene.transform.rotation = transform.rotation;
+                scene.transform.localScale = transform.localScale;
+            }
+        }
+
         #endregion // UNTIY_MONOBEHAVIOUR_METHODS
 
-
+        public void Reload()
+        {
+            _currentState = State.Disabled;
+            if (scene != null)
+            {
+                Destroy(scene.gameObject);
+            }
+            scene = null;
+        }
 
         #region PUBLIC_METHODS
 
@@ -69,6 +96,13 @@ namespace ARQuestCreator
 
         private void OnTrackingFound()
         {
+
+            if (_currentState == State.Disabled)
+            {
+                _currentState = State.WaitingForScene;
+                GameManager.Instance.SetTrackableEH(this);
+            }
+
             scene.SetActive(true);
             
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
@@ -77,7 +111,11 @@ namespace ARQuestCreator
 
         private void OnTrackingLost()
         {
-            scene.SetActive(false);
+            if (scene != null)
+            {
+                OnDisable();
+                scene.SetActive(false);
+            }
 
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
         }

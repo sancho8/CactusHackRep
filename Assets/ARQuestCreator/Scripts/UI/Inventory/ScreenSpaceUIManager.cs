@@ -9,6 +9,9 @@ namespace ARQuestCreator.UI {
         [SerializeField] UIViewItemController _itemViewUI;
         [SerializeField] UIPlayerController _playerUI;
         [SerializeField] UIPushNotificationController _notificationUI;
+        [SerializeField] UIEditiSceneController _editSceneUI;
+        [SerializeField] UIStartScene _mainUI;
+
         private IUIController[] _array;
 
         public enum UIType
@@ -16,7 +19,9 @@ namespace ARQuestCreator.UI {
             Nothing,
             Inventory,
             ItemView,
-            Player
+            Player,
+            Edit,
+            Main
         }
 
         private void Awake()
@@ -24,13 +29,16 @@ namespace ARQuestCreator.UI {
             _array = new IUIController[] {
                 _inventoryUI,
                 _itemViewUI,
-                _playerUI
+                _playerUI,
+                _editSceneUI,
+                _mainUI
             };
         }
 
         public void ShowUI(UIType uitype)
         {
             int index = -1;
+            _editSceneUI.Hide();
             switch (uitype)
             {
                 case UIType.Inventory:
@@ -41,6 +49,15 @@ namespace ARQuestCreator.UI {
                     break;
                 case UIType.Player:
                     index = 2;
+                    break;
+                case UIType.Edit:
+                    index = 3;
+                    break;
+                case UIType.Main:
+                    index = 4;
+                    break;
+                case UIType.Nothing:
+                    index = -1;
                     break;
                 default:
                     Debug.LogError("Undefined UIType!!!", this);

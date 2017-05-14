@@ -42,5 +42,17 @@ namespace ARQuestCreator.SceneCreator
             Debug.Log(gameContainer.name + "   GameContainer loaded from XML file\n");
             return gameContainer;
         }
+
+        public SceneContainer GetSceneContainerByName(string sceneName)
+        {
+            foreach(var sc in scenes)
+            {
+                if (sc.name == sceneName)
+                {
+                    return sc;
+                }
+            }
+            return null;
+        }
     }
 }

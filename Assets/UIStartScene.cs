@@ -1,16 +1,36 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class UIStartScene : MonoBehaviour {
-
-    void Start()
+namespace ARQuestCreator.UI
+{
+    public class UIStartScene : MonoBehaviour, IUIController
     {
-        for(int i=0; i < transform.childCount; i++)
+
+        [SerializeField] UIMainMenu _main;
+        [SerializeField] UICreateNewQuest _createQuest;
+        [SerializeField] UIChooseQuest _chooseQuest;
+
+        public void Hide()
         {
-            transform.GetChild(i).gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
-        transform.GetChild(0).gameObject.SetActive(true);
+
+        public void Show()
+        {
+            gameObject.SetActive(true);
+        }
+
+        void Start()
+        {
+            ShowMainMenu();
+        }
+
+        public void ShowMainMenu()
+        {
+            _main.Show();
+            _createQuest.Hide();
+            _chooseQuest.Hide();
+        }
     }
-	
 }
