@@ -9,7 +9,7 @@ namespace ARQuestCreator.UI
     {
 
         private Animator _animator;
-        [SerializeField] Text _textDescription;
+        [SerializeField] InputField _textDescription;
         [SerializeField] Button _btnDescription;
         [SerializeField] Button _btnPickup;
         [SerializeField] Button _btnLeave;
@@ -73,6 +73,7 @@ namespace ARQuestCreator.UI
         {
             Debug.Log("OnLeaveItem");
             Item currentItem = ItemViewer.Instance.GetBackItem();
+            currentItem.description = _textDescription.text;
             currentItem.GoToApplyedParent();
             switch (currentItem.state)
             {
