@@ -42,16 +42,11 @@ namespace ARQuestCreator.SceneCreator
 
         public void Save()
         {
-            _sceneContainer.Save(_xmlFileName);
+
         }
 
         public void Load()
         {
-            _sceneContainer = SceneContainer.Load(_xmlFileName);
-            foreach(var item in _sceneContainer._items)
-            {
-                InstantiateItem(item);
-            }
         }
 
         public void ResetContent()

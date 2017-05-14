@@ -12,12 +12,15 @@ namespace ARQuestCreator.SceneCreator
 
         public AllGamesContainer() { }
 
-        public List<GameContainer> games;
+        public List<string> gameNames;
 
-        public GameContainer GetNewGameContainer(string name)
+        public GameContainer CreateNewGameContainer(string name)
         {
             GameContainer gc = new GameContainer(true);
             gc.name = name;
+            Save();
+            gc.Save(name);
+            gc = GameContainer.Load(name);
             return gc;
         }
 

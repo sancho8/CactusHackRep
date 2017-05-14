@@ -80,27 +80,5 @@ namespace ARQuestCreator.SceneCreator
 
         public List<ItemInfo> _items;
         public List<ChestInfo> _chests;
-        
-        public void Save(string fileName)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(SceneContainer));
-            TextWriter writer = new StreamWriter(System.IO.Path.Combine(Application.persistentDataPath, fileName));
-            serializer.Serialize(writer, this);
-            writer.Close();
-            Debug.Log("Objects saved into XML file\n");
-        }
-
-        public static SceneContainer Load(string fileName)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(SceneContainer));
-            TextReader reader = new StreamReader(System.IO.Path.Combine(Application.persistentDataPath, fileName));
-            SceneContainer sceneContainer = serializer.Deserialize(reader) as SceneContainer;
-            reader.Close();
-            Debug.Log("Objects loaded from XML file\n");
-            return sceneContainer;
-        }
-
-
-
     }
 }
