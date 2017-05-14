@@ -44,15 +44,17 @@ namespace ARQuestCreator.SceneCreator
 
         public static AllGamesContainer Load(string fileName = "allGamesContainer.xml")
         {
+            string path = System.IO.Path.Combine(Application.persistentDataPath, fileName);
+            Debug.Log("Pre AllGamesContainer | path:" + path);
             AllGamesContainer allGamesContainer;
-            try
+            if (File.Exists(path))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(AllGamesContainer));
-                TextReader reader = new StreamReader(System.IO.Path.Combine(Application.persistentDataPath, fileName));
+                TextReader reader = new StreamReader(path);
                 allGamesContainer = serializer.Deserialize(reader) as AllGamesContainer;
                 reader.Close();
             }
-            catch (IOException e)
+            else
             {
                 Debug.Log("Non create all game container");
                 allGamesContainer = new AllGamesContainer(true);
