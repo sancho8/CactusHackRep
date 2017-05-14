@@ -24,23 +24,23 @@ namespace ARQuestCreator.SceneCreator
         
         public List<SceneContainer> scenes;
 
-        public void Save(string fileName)
+        public void Save()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(GameContainer));
-            TextWriter writer = new StreamWriter(System.IO.Path.Combine(Application.persistentDataPath, fileName));
+            TextWriter writer = new StreamWriter(System.IO.Path.Combine(Application.persistentDataPath, name));
             serializer.Serialize(writer, this);
             writer.Close();
-            Debug.Log("GameContainer saved into XML file\n");
+            Debug.Log(name + "  GameContainer saved into XML file\n");
         }
 
         public static GameContainer Load(string fileName)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(GameContainer));
             TextReader reader = new StreamReader(System.IO.Path.Combine(Application.persistentDataPath, fileName));
-            GameContainer allGamesContainer = serializer.Deserialize(reader) as GameContainer;
+            GameContainer gameContainer = serializer.Deserialize(reader) as GameContainer;
             reader.Close();
-            Debug.Log("AllGamesContainer loaded from XML file\n");
-            return allGamesContainer;
+            Debug.Log(gameContainer.name + "   GameContainer loaded from XML file\n");
+            return gameContainer;
         }
     }
 }

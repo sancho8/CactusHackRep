@@ -38,7 +38,7 @@ namespace ARQuestCreator.UI
 
         void OnClick()
         {
-            Debug.Log("AAAAAAAAAAAAAA");
+            GetComponentInParent<UIChooseQuest>().OnChooseQuest(_name);
         }
 
 

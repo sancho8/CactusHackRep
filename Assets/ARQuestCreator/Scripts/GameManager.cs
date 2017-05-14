@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ARQuestCreator.UI;
-
+using ARQuestCreator.SceneCreator;
 namespace ARQuestCreator
 {
     public class GameManager : Singleton<GameManager>{
+
+        public enum GameRunningType
+        {
+            Play,
+            Edit
+        }
 
         private void Start()
         {
@@ -45,8 +51,21 @@ namespace ARQuestCreator
             ScreenSpaceUIManager.Instance.ShowUI(ScreenSpaceUIManager.UIType.Player);
         }
 
+        public List<string> GetAllGamesNames()
+        {
+            return AllGamesContainer.Load().gameNames;
+        }
 
+        public void LoadGame(string gameName, GameRunningType grt)
+        {
+            Debug.Log("Load game" + gameName+" |  editMode: "+ grt);
+        }
 
+        public void CreateNewGame(string gameName)
+        {
+            var newGame = AllGamesContainer.Load().CreateNewGameContainer(gameName);
+            LoadGame(gameName, GameRunningType.Edit);
+        }
     }
 }
 
